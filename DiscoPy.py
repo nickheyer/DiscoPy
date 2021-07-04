@@ -38,12 +38,12 @@ async def on_message(message):
     with open(save_dir, "r") as output_code:
       read_code = output_code.read()
       await message.channel.send(read_code)
-  elif message.content.startswith("add user ") and message.author.name in allowed_users:
+  elif message.content.startswith("!c! add user") and message.author.name in allowed_users:
       added_user = message.content[9:]
       with open(allowed_persons_dir, "a") as users:
         users.write(f"\n{added_user}")
       await message.channel.send(f"{added_user} has been appended to allowed persons.")
-  elif message.content.startswith("list users"):
+  elif message.content.startswith("!c! list users"):
       await message.channel.send(f"These users can run code using me: \n{allowed_users}")
 
 
