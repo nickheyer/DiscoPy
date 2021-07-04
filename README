@@ -17,7 +17,7 @@ This bot is working!
 backticks (key below esc) "```" then your code "print("This bot is working!")" then follow it up with another "```" to close it off.
 ALSO, your discord username (in this format: Username#6666) must be in the file "whitelisted.txt" for the bot to recognize your commands.
 If you run the bot, it will autogenerate the .txt and you can type your name in then, after that you can add allowed users via the command
-"!c! add user" or list all users with "!c! list users".
+"!c! add user:" or list all users with "!c! list users:".
 
 So again, another example would be:
 
