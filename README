@@ -13,7 +13,11 @@ If you type the below message...
 DiscoPy will message back...
 This bot is working!
 
-  As you can see, each message containing code requires a couple things, first off "!c!" then a space " " then three backticks (key below esc) "```" then your code "print("This bot is working!")" then follow it up with another "```" to close it off. ALSO, your discord username (in this format: Username#6666) must be in the file "whitelisted.txt" for the bot to recognize your commands. If you run the bot, it will autogenerate the .txt and you can type your name in then, after that you can add allowed users via the command prefix "!c! add user" or list all users with "!c! list users".
+  As you can see, each message containing code requires a couple things, first off "!c!" then a space " " then three 
+backticks (key below esc) "```" then your code "print("This bot is working!")" then follow it up with another "```" to close it off.
+ALSO, your discord username (in this format: Username#6666) must be in the file "whitelisted.txt" for the bot to recognize your commands.
+If you run the bot, it will autogenerate the .txt and you can type your name in then, after that you can add allowed users via the command prefix
+"!c! add user" or list all users with "!c! list users".
 
 So again, another example would be:
 
@@ -25,9 +29,12 @@ print_str("See, even this function works!")```
 This would call the funtion print_str, passing in the string, and it would print...
 See, even this function works!
 
-  As you may be able to guess, this bot does not play well with infinite loops and it has no defense (apart from whitelisting) against people running malicious code. It also doesn't take in any input after the initial execution. Everytime the code is written/executed, the previous code is erased. 
+  As you may be able to guess, this bot does not play well with infinite loops and it has no defense (apart from whitelisting) against people
+running malicious code. It also doesn't take in any input after the initial execution. Everytime the code is written/executed, the previous
+code is erased. 
 
-  To install and run the bot, you need to create a new application via (https://discord.com/developers/applications). Once you have a TOKEN provided to you by discord, you can replace "TOKEN GOES HERE" (check the last line in DiscoPy.py) with your token. Following that, double-click DiscoPy.py and make sure you manually input your discord username into "whitelisted.txt". You should be good to go!
+  To install and run the bot, you need to create a new application via (https://discord.com/developers/applications). Once you have a TOKEN
+provided to you by discord, you can replace "TOKEN GOES HERE" (check the last line in DiscoPy.py) with your token. Following that, double-
+click DiscoPy.py and make sure you manually input your discord username into "whitelisted.txt". You should be good to go!
 
 Message me on discord if you have any questions! ~ NastyNick#4212
-  
