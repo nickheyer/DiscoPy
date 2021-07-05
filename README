@@ -30,11 +30,14 @@ This would call the funtion print_str, passing in the string, and it would print
 See, even this function works!
 
   As you may be able to guess, this bot does not play well with infinite loops and it has no defense (apart from whitelisting) against people
-running malicious code. It also doesn't take in any input after the initial execution. Everytime the code is written/executed, the previous
+running malicious code. It also doesn't take in any input after the initial execution*. Everytime the code is written/executed, the previous
 code is erased. 
 
+  * = All occurences of "input()" will now be replaced by values of your choosing, via a prompt from the bot. You can skip this and try to 
+  execute your code anyways, or in the case that it is a false positive, by responding with "!c! false positive".
+
   To install and run the bot, you need to create a new application via (https://discord.com/developers/applications). Once you have a TOKEN
-provided to you by discord, you can replace "TOKEN GOES HERE" (check the last line in DiscoPy.py) with your token. Following that, double-
+provided to you by discord, you can replace "TOKEN GOES HERE" (check the beginning of DiscoPy.py) with your token. Following that, double-
 click DiscoPy.py and make sure you manually input your discord username into "whitelisted.txt". You should be good to go!
 
 Message me on discord if you have any questions! ~ NastyNick#4212
