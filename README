@@ -4,7 +4,7 @@ Say hi on discord!
 
 
 
-Summary: This bot executes python code within a exec() method, then reads back the codes returned value via discord message.
+Summary: This bot executes python code within a exec() function, then reads back the codes returned value via discord message.
 For example:
 
 If you type the below message...
