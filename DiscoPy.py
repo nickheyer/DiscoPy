@@ -5,7 +5,7 @@ from time import sleep
 import re
 
 TOKEN = "ENTER YOUR DISCORD PROVIDED TOKEN HERE"
-
+delay = 2
 client = discord.Client()
 embed = discord.Embed() 
 
@@ -29,6 +29,9 @@ async def on_ready():
 #everytime a user sends discord message, the below is checked
 @client.event
 async def on_message(message):
+  current_player = message.author
+  current_channel = message.channel.id
+  global delay
   with open(allowed_persons_dir, "r") as listed_users:
     allowed_users = listed_users.read()
   if message.author == client.user:
@@ -40,18 +43,18 @@ async def on_message(message):
     with open(last_code_path, "r") as last_code_r:
       last_code_doc = last_code_r.read()
     if "input(" in last_code_doc:
-      await message.channel.send("There is an input in here...") ; sleep(1)
-      await message.channel.send("Unfortunately, typing input() values directly into a python shell from a discord message is beyond my comprehension. Initiating a find-and-replace-with-a-value for all input() functions...") ; sleep(1)
+      await message.channel.send("There is an input in here...") ; sleep(delay)
+      await message.channel.send("Unfortunately, typing input() values directly into a python shell from a discord message is beyond my comprehension. Initiating a find-and-replace-with-a-value for all input() functions...") ; sleep(delay)
     while "input(" in last_code_doc:
       def input_searcher(text):
         newex = re.search(r'input\(.+?,?([)]|$)', text)
         return newex.group(0)
-      await message.channel.send(f"The input is: \"{input_searcher(last_code_doc)}\"") ; sleep(1)
-      await message.channel.send(f"What would you like to enter for this input?") ; sleep(1)
-      msg = await client.wait_for('message')
+      await message.channel.send(f"The input is: \"{input_searcher(last_code_doc)}\"") ; sleep(delay)
+      await message.channel.send(f"What would you like to enter for this input?") ; sleep(delay)
+      msg = await client.wait_for('message', check=lambda message: message.author == current_player and message.channel.id == current_channel)
       new_msg = msg.content
       if "!c! false positive" in new_msg.lower():
-        await message.channel.send("False positive has been noted, pushing your code through as is...") ; sleep(1)
+        await message.channel.send("False positive has been noted, pushing your code through as is...") ; sleep(delay)
         break
       def input_replacer(repl_text, text):
         newex = re.sub(r'input\(.+?,?([)]|$)', repl_text, text, count = 1)
@@ -70,7 +73,17 @@ async def on_message(message):
         read_code = output_code.read()
         await message.channel.send(read_code)
     except:
-      await message.channel.send("Unfortunately that code errored out. Check what you've written and try again!") ; sleep(1)
+      await message.channel.send("Unfortunately that code errored out. Check what you've written and try again!") ; sleep(delay)
+  elif message.content.startswith("!c! set delay") and message.author.name in allowed_users:
+    new_delay = message.content[13:].strip()
+    try:
+      if int(new_delay) >= 0 and int(new_delay) <= 10:
+        delay = int(new_delay)
+        await message.channel.send(f"Delay set to {delay}")
+      else:
+        await message.channel.send(f"Invalid input...")
+    except:
+      await message.channel.send("Invalid input...")
   elif message.content.startswith("!c! add user") and message.author.name in allowed_users:
       added_user = message.content.strip()[13:]
       with open(allowed_persons_dir, "a") as users:
